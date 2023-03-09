@@ -9,25 +9,8 @@ function getRandomWord(difficulty){
     /*
     Get a random word for the difficulty selected from the
      */
-    //return word_dict[difficulty][Math.floor(Math.random()*word_dict[difficulty].length)];
+    return word_dict[difficulty][Math.floor(Math.random()*word_dict[difficulty].length)];
 
-    const dictValue = 20
-    let minCorpus = null, maxCorpus = null
-
-    if(difficulty === "easy"){
-        minCorpus = 10000
-        maxCorpus = 100000
-        fetch("the query is not working").then((data)=>{console.log(data)})
-    }
-    else if(difficulty === "medium"){
-
-    }
-    else if (difficulty === "hard"){
-
-    }
-    else {
-
-    }
 }
 
 function beginGame(selectorValue) {
