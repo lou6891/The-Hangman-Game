@@ -1,0 +1,178 @@
+<!-- https://github.com/AlejandroPerezMartin/hangman -->
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>The Hangman</title>
+  <link rel="icon" href="./img/logo.png">
+  <meta name="description" content="The hangman game made by Luca Conti">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+
+  <script src="js/main.js"></script>
+  <script src="js/words.js"></script>
+</head>
+
+<body id="body">
+
+
+
+  <!-- ------------------------ Modal for starting a game ------------------------ -->
+  <section class="modal-container" id="WelcomePrompt">
+
+    <!-- The modal itself -->
+    <div class="modal" id="initialPrompt">
+      <!-- The modal title -->
+      <h2 class="modal-title">
+        The Hangman
+      </h2>
+      <!-- The modal content -->
+      <p class="modal-text">Last game you will ever play!</p>
+      <!-- The modal button -->
+      <button class="button" id="WelcomePromptButton">
+        P L A Y
+      </button>
+
+
+    </div>
+
+    <!-- ------------------------- Select Difficulty ------------------------- -->
+    <div id="DifficultyPrompt" class="modal">
+
+      <h1 class="modal-text">
+        Select Difficulty
+      </h1>
+
+      <label for="difficultySelector"></label><select id="difficultySelector" >
+      <option id="easy" value="easy"> E A S Y </option>
+      <option id="medium" value="medium"> M E D I U M</option>
+      <option id="hard" value="hard"> H A R D </option>
+      <option  id="self-harm" value="self_harm" selected> P A I N</option>
+    </select>
+      <div style="margin-top: 10px">
+        <button id="begin" class="button" > B E G I N </button>
+      </div>
+
+    </div>
+
+  </section>
+  <script>
+
+
+    function test(){
+      fetch("https://wordsapiv1.p.rapidapi.com/words/?frequencyGreaterThan={1000}&lettersEqualTo={3}")
+              .then((data)=>{console.log(data.json())})
+    }
+
+    test()
+
+
+    let errorCount = 1
+    let rightCount = 0
+    let word = undefined
+    let difficulty = undefined
+    let letterSet = undefined
+
+    const body = document.getElementById("body")
+    const initialPrompt = document.getElementById("initialPrompt")
+
+    const DifficultyPrompt = document.getElementById("DifficultyPrompt")
+    DifficultyPrompt.hidden  =true
+
+    const WelcomePrompt = document.getElementById("WelcomePrompt");
+    const difficulty_selector = document.getElementById("difficultySelector")
+
+    const play_button = document.getElementById("WelcomePromptButton")
+    play_button.addEventListener('click', ()=>{
+      initialPrompt.hidden = true
+      WelcomePrompt.hidden  = false
+      DifficultyPrompt.hidden  =false
+
+      const beginButton = document.getElementById("begin")
+      beginButton.addEventListener("click", ()=>{
+        const selectorValue =  difficulty_selector.value;
+        beginGame(selectorValue)
+      })
+    });
+  </script>
+
+
+  <!-- -------------------------------- on-screen-container -------------------------------- -->
+  <!-- This code represents a section with an ID of "on-screen-container". It contains three main parts:
+    1. A div element with an ID of "word-display" and a script that creates and displays the word being guessed.
+    2. A div element with an ID of "keyboard" and a script that creates and displays the keyboard for selecting letters.
+    3. A div element with an ID of "endGame" that contains the result of the game (win or lose), and a button to start a new game. -->
+  <section id="on-screen-container">
+
+    <!-- -------------------------------- word  -------------------------------- -->
+    <!-- This div element with an ID of "word-display" is used to display the letters of the word being guessed.
+    The createWord() function is called in a script to create and display the word. -->
+    <div id="word-display"></div>
+    <script>
+
+      createWord()
+    </script>
+
+    <!-- -------------------------------- keyboard  -------------------------------- -->
+    <!-- This div element with an ID of "keyboard" is used to display the keyboard for selecting letters.
+    The create_keyboard() function is called in a script to create and display the keyboard. -->
+    <div id="keyboard"></div>
+
+    <!-- ------------------------- END GAME ------------------------- -->
+    <!-- This div element with an ID of "endGame" is used to display the result of the game (win or lose) and a button to start a new game.
+    It is initially hidden.
+    There is event listener to the "new-game-button" that reloads the page when clicked. -->
+    <div id="endGame" >
+
+      <h1 id="result_title"></h1>
+      <h1 id="word-result"></h1>
+      <p></p>
+      <button id="new-game-button"  class="button">New Game</button>
+
+      <script>
+        const newGameButton = document.getElementById("new-game-button")
+        newGameButton.addEventListener("click", ()=>{ location.reload() })
+      </script>
+
+    </div>
+
+
+    <script>
+
+      const wordDisplay =  document.getElementById("word-display")
+      const keyboard =  document.getElementById("keyboard")
+      const endGame =  document.getElementById("endGame")
+      endGame.hidden = true
+
+    </script>
+  </section>
+
+
+
+  <!-- ----------------------------------  hangman ----------------------------------  -->
+  <section id="hangmanContainer">
+    <img src="./img/tree.png" class="tree_picture" alt="tree">
+
+    <img id="dancing_skeleton_1" src="./img/dancing_skeleton.gif" alt="dancing_skeleton" class="dancing_skeleton">
+    <img id="dancing_skeleton_2" src="./img/dancing_skeleton.gif" alt="dancing_skeleton" class="dancing_skeleton">
+    <img id="dancing_skeleton_3" src="./img/dancing_skeleton.gif" alt="dancing_skeleton" class="dancing_skeleton">
+
+  </section>
+  <!-- <img src="./img/tree.png" class="tree_picture" alt="tree"> -->
+  <!-- ------------------------- hangman ------------------------- -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,378 @@
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+@font-face { font-family: NightmareStory; src: url('font/NightmareStory-BWV8V.ttf'); }
+@font-face { font-family: Bloody; src: url('font/BLOODY.TTF'); }
+@font-face { font-family: BloodyTerror; src: url('font/Bloody_terror.ttf'); }
+
+
+*{
+  --titleFont : BloodyTerror;
+  --titleFontSize : 70px;
+  --generalFont : Bloody;
+  --generalFontSize : 60px;
+  --generalButtonFontSize : 40px;
+
+  --keyboardWidthHeigth : 50px;
+  --keyboardFontSize : 30px;
+}
+
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+  background-image: url("../img/graveyard_bckground.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  //background-size: contain;
+  background-size:100% 100vh;
+
+  overflow: hidden;
+}
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+
+h1{
+  margin: 20px 0 20px 0;
+}
+
+.no_display{
+  display: none;
+  visibility: collapse;
+}
+
+
+#wrapper{
+  position: absolute;
+  background-color: transparent;
+  z-index: 10;
+  left: 100px;
+  bottom: 170px;
+  font-size: 40px;
+}
+
+
+
+#WelcomePrompt .container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(0%, 50%);
+}
+
+.button{
+  background-color: white;
+  border: 2px #222222 solid;
+  border-radius: 5px;
+  min-width: 100px;
+  min-height: 50px;
+  margin: 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+#difficultySelector{
+  border: 2px #ee0808 solid;
+  border-radius: 5px;
+  font-size: 30px;
+  padding : 5px;
+  text-align: center;
+}
+
+select option:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.difficulty-button{
+  border: 2px #57a82d solid;
+  border-radius: 5px;
+  padding : 50px;
+  font-size: 30px;
+  text-align: center;
+
+}
+
+
+#hangmanContainer{
+  //background-image: url("../img/tree.png");
+  //background-repeat: no-repeat;
+  //background-attachment: fixed;
+  //background-size: auto;
+  //right: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+
+
+.tree_picture{
+  min-height: 750px;
+  position: absolute;
+  right: 0;
+  width: auto ;
+  height: 100%;
+  object-fit: fill;
+  z-index: 1;
+  transform: translate(-2.7%, -2.5%) scale(105%);;
+}
+
+.skeleton_picture{
+  position: absolute;
+  right : 200px;
+  top: 10px;
+  object-fit: fill;
+  transform: scale(65%);
+}
+
+@keyframes swing {
+  0% { transform: translate(0, 18%) rotate(0) scale(65%);}
+  25% { transform: translate(0, 18%) rotate(20deg) scale(65%);}
+  50% { transform: translate(0, 18%) rotate(0deg) scale(65%);}
+  75% { transform: translate(0, 18%) rotate(-20deg) scale(65%);}
+  100% { transform: translate(0, 18%) rotate(0deg) scale(65%);}
+}
+
+.swing {
+  transform-origin: top center;
+  animation-name: swing;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.dancing_skeleton{
+
+  position: absolute;
+  opacity: 0;
+  transition: opacity 2.3s ease-in-out;
+}
+
+#dancing_skeleton_1{
+  transform: scale(85%);
+  right: -100px;
+  top : 405px;
+
+}
+
+#dancing_skeleton_2{
+  right: +180px;
+  top : 380px;
+  transform: scale(105%);
+}
+
+#dancing_skeleton_3{
+  transform: scale(85%);
+  right: +470px;
+  top : 390px;
+}
+
+
+.show {
+  opacity: 1;
+}
+
+
+@media screen and (max-height: 800px) {
+  .skeleton_picture {
+    top: -15px;
+    right : 130px;
+  }
+}
+
+
+
+#on-screen-container{
+  border-radius: 20px;
+  padding: 5px;
+  backdrop-filter: blur(5px);
+
+  //visibility: hidden;
+  position: absolute;
+  background-color: transparent;
+  z-index: 10;
+  left: 100px;
+  bottom: 170px;
+  font-size: 40px;
+}
+
+
+
+#word-display{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#word-display span{
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 1px #222222 solid;
+  width: var(--keyboardWidthHeigth);
+  height: var(--keyboardWidthHeigth);
+  margin: 10% 2%;
+}
+
+#word-display p{
+  text-align: center;
+  font-size: var(--keyboardFontSize);
+  margin : 0;
+  transform: translate(0, 25%);
+  font-family: var(--generalFont);
+}
+
+
+
+#keyboard {
+  flex-direction: column;
+  align-items: center;
+}
+
+#keyboard .row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#keyboard button {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 1px #222222 solid;
+  border-radius: 5px;
+  font-size: var(--keyboardFontSize);
+  cursor: pointer;
+
+  justify-content: center;
+  align-items: center;
+  width: var(--keyboardWidthHeigth);
+  height: var(--keyboardWidthHeigth);
+
+  margin-left: 5px;
+  margin-right: 5px;
+
+  z-index: 90;
+}
+
+#endGame{
+  justify-content: center;
+  text-align: center;
+  justify-items: center;
+}
+
+#result_title{
+  font-size: var(--titleFontSize);
+  font-family: var(--titleFont);
+  color: darkred;
+}
+
+#word-result{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: var(--generalFont);
+}
+
+
+@media screen and (max-width: 800px) {
+  #keyboard button{
+    width: 25px;
+    height: 25px;
+  }
+  *{
+    /* original 50px 30px */
+    --keyboardWidthHeigth: 30px;
+    --keyboardFontSize: 20px;
+
+    --titleFontSize : 50px;
+    --generalFontSize : 40px;
+    --generalButtonFontSize : 20px;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 800px){
+  #keyboard button{
+    width: 35px;
+    height: 35px;
+  }
+  *{
+    /* original 50px 30px */
+    --keyboardWidthHeigth: 40px;
+    --keyboardFontSize: 30px;
+
+    --titleFontSize : 55px;
+    --generalFontSize : 45px;
+    --generalButtonFontSize : 30px;
+  }
+}
+
+
+
+
+/* The modal container styles */
+.modal-container {
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(252, 16, 16, 0.5); /* grey opaque background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The modal styles */
+.modal {
+  background-color: white;
+  padding: 5%;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+/* The modal title styles */
+.modal-title {
+  margin-top: 2%;
+  margin-bottom: 5%;
+  font-family: var(--titleFont);
+  font-size: var(--titleFontSize);
+  letter-spacing: 10px;
+}
+
+.modal-text{
+  margin-top: 0;
+  font-family: var(--generalFont);
+  font-size: var(--generalFontSize);
+  margin-bottom: 2%;
+  letter-spacing: 5px;
+}
+
+
+/* ANIMATIONS */
+
+
+
+
