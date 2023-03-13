@@ -32,3 +32,6 @@
 - Improve animation quality by having custom animation designed
 - Improve the support for table and mobile
 - Multiplayer mode
+
+#### Personal notes:
+Github Pages submodules : https://gist.github.com/kevincolten/315e27402f97a66def62
