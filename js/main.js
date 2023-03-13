@@ -119,8 +119,6 @@ function create_keyboard(){
     It then appends each button to a new row div element and appends that row to the keyboard element.
      */
 
-    keyboard.innerHTML = ""
-
     for (let i = 0; i < rows.length; i++) {
         const row = rows[i];
         const rowDiv = document.createElement("div");
