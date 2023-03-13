@@ -5,15 +5,35 @@
  */
 
 
-function getRandomWord(difficulty){
+async function getRandomWord(difficulty){
     /*
     Get a random word for the difficulty selected from the
      */
-    return word_dict[difficulty][Math.floor(Math.random()*word_dict[difficulty].length)];
+    //return word_dict[difficulty][Math.floor(Math.random()*word_dict[difficulty].length)];
+    // pain = (0, 0.01)
+    // hard = (0 , 1)
+    // medium (1, 4)
+    // easy (4, 100)
+    if(difficulty === "easy"){
+        return datamuse_api_call(4, 100)
+    }
+    else if(difficulty ==="medium"){
+        return datamuse_api_call(1, 4)
+    }
+    else if (difficulty === "hard"){
+        return datamuse_api_call(0.01, 1)
+    }
+    else if(difficulty === "pain"){
+        return datamuse_api_call(0, 0.01)
+    }
+    else{
+        throw new Error("Something went wrong")
+    }
+
 
 }
 
-function beginGame(selectorValue) {
+async function beginGame(selectorValue) {
     /*
     starts the hangman game. Here is a breakdown of what the function does:
 
@@ -30,12 +50,15 @@ function beginGame(selectorValue) {
 
     if (selectorValue) {
         difficulty = selectorValue
-        word = Array.from(getRandomWord(difficulty).toUpperCase())
+        const wordResult = await getRandomWord(difficulty)
+        word = Array.from(wordResult["word"].toUpperCase())
+        definition = wordResult["definition"]
         letterSet = new Set(word)
         console.log("line 96", word, letterSet, new Set(word))
 
         DifficultyPrompt.hidden = true
         WelcomePrompt.hidden = true
+        newGameButtonContainer.hidden = false
         WelcomePrompt.remove()
 
         body.append(document.getElementById("on-screen-container"))
@@ -152,6 +175,7 @@ function addLetter(letter){
 
                 document.getElementById("result_title").innerText = "YOU WON"
                 document.getElementById("word-result").innerText = word.join("")
+                document.getElementById("word-definition").innerText = "definition:\n" +definition
 
 
                 // Show and animate the winning dancing skeletons
@@ -180,6 +204,8 @@ function addLetter(letter){
 
                 document.getElementById("result_title").innerText = "YOU LOST"
                 document.getElementById("word-result").innerText = word.join("")
+                document.getElementById("word-definition").textContent = "definition: \n" + definition
+
 
                 //Swing animation of the hangman
                 const skeleton = document.getElementById('life7');

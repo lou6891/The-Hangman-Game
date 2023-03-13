@@ -55,15 +55,12 @@ video {
 }
 
 
-h1{
-  margin: 20px 0 20px 0;
-}
+h1{ margin: 20px 0 20px 0; }
 
 .no_display{
   display: none;
   visibility: collapse;
 }
-
 
 #wrapper{
   position: absolute;
@@ -73,8 +70,6 @@ h1{
   bottom: 170px;
   font-size: 40px;
 }
-
-
 
 #WelcomePrompt .container{
   display: flex;
@@ -102,9 +97,7 @@ h1{
   text-align: center;
 }
 
-select option:not(:last-child) {
-  margin-bottom: 8px;
-}
+select option:not(:last-child) { margin-bottom: 8px; }
 
 .difficulty-button{
   border: 2px #57a82d solid;
@@ -115,17 +108,10 @@ select option:not(:last-child) {
 
 }
 
-
 #hangmanContainer{
-  //background-image: url("../img/tree.png");
-  //background-repeat: no-repeat;
-  //background-attachment: fixed;
-  //background-size: auto;
-  //right: 0;
   height: 100vh;
   width: 100%;
 }
-
 
 
 .tree_picture{
@@ -136,36 +122,35 @@ select option:not(:last-child) {
   height: 100%;
   object-fit: fill;
   z-index: 1;
-  transform: translate(-2.7%, -2.5%) scale(105%);;
+  transform: translate(-2.7%, 0%) scale(106%);;
 }
 
 .skeleton_picture{
   position: absolute;
   right : 200px;
-  top: 10px;
+  top: 28px;
   object-fit: fill;
   transform: scale(65%);
 }
 
 @keyframes swing {
   0% { transform: translate(0, 18%) rotate(0) scale(65%);}
-  25% { transform: translate(0, 18%) rotate(20deg) scale(65%);}
+  25% { transform: translate(0, 18%) rotate(7deg) scale(65%);}
   50% { transform: translate(0, 18%) rotate(0deg) scale(65%);}
-  75% { transform: translate(0, 18%) rotate(-20deg) scale(65%);}
+  75% { transform: translate(0, 18%) rotate(-7deg) scale(65%);}
   100% { transform: translate(0, 18%) rotate(0deg) scale(65%);}
 }
 
 .swing {
   transform-origin: top center;
   animation-name: swing;
-  animation-duration: 8s;
+  animation-duration: 7s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
 
 .dancing_skeleton{
-
   position: absolute;
   opacity: 0;
   transition: opacity 2.3s ease-in-out;
@@ -175,7 +160,6 @@ select option:not(:last-child) {
   transform: scale(85%);
   right: -100px;
   top : 405px;
-
 }
 
 #dancing_skeleton_2{
@@ -190,10 +174,7 @@ select option:not(:last-child) {
   top : 390px;
 }
 
-
-.show {
-  opacity: 1;
-}
+.show { opacity: 1; }
 
 
 @media screen and (max-height: 800px) {
@@ -203,24 +184,32 @@ select option:not(:last-child) {
   }
 }
 
-
-
 #on-screen-container{
   border-radius: 20px;
   padding: 5px;
   backdrop-filter: blur(5px);
 
-  //visibility: hidden;
   position: absolute;
   background-color: transparent;
   z-index: 10;
   left: 100px;
   bottom: 170px;
   font-size: 40px;
+
+  justify-content: center;
+  justify-items: center;
 }
 
+#new-game-button-container{
+  width: 100%;
+  justify-items: center;
+  align-content: center;
+}
 
-
+#new-game-button-container .button{
+  width: calc(100% - 20px);
+  display:block;
+}
 #word-display{
   display: flex;
   justify-content: center;
@@ -292,6 +281,15 @@ select option:not(:last-child) {
   margin-top: 10px;
   margin-bottom: 10px;
   font-family: var(--generalFont);
+}
+
+#word-definition{
+  justify-self: center;
+  font-size: 25px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  margin : 0 0 10px 0;
 }
 
 
