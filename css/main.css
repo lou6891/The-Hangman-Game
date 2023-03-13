@@ -200,15 +200,23 @@ select option:not(:last-child) { margin-bottom: 8px; }
   justify-items: center;
 }
 
+/*
+Container for button made due to css issue
+ with the width and position of the button
+ some with the calc of the width
+ */
 #new-game-button-container{
   width: 100%;
   justify-items: center;
   align-content: center;
+  margin: 20px 10px;
 }
 
 #new-game-button-container .button{
+  margin:0;
   width: calc(100% - 20px);
   display:block;
+  background-color: transparent;
 }
 #word-display{
   display: flex;

@@ -19,9 +19,9 @@
 >4. Into the game
 ![IntoTheGame](./img/readme_imgs/img_3.png)
 >A. You Won Page
->![ToBEChanged](./img/readme_imgs/img_3.png)
+>![ToBEChanged](./img/readme_imgs/won_gif.gif)
 >B You Lost Page
->![ToBEChanged](./img/readme_imgs/img_3.png)
+>![ToBEChanged](./img/readme_imgs/lost_gif.gif)
 >5. The game starts again
 
 
