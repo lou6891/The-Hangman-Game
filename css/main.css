@@ -1,9 +1,8 @@
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
-@font-face { font-family: NightmareStory; src: url('font/NightmareStory-BWV8V.ttf'); }
-@font-face { font-family: Bloody; src: url('font/BLOODY.TTF'); }
-@font-face { font-family: BloodyTerror; src: url('font/Bloody_terror.ttf'); }
+@font-face { font-family: Bloody; src: url('font/BLOODY.woff'); }
+@font-face { font-family: BloodyTerror; src: url('font/Bloody_terror.woff'); }
 
 
 *{
