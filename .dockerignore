@@ -1,0 +1,7 @@
+#Ingore img for readme and readme
+img/readme_imgs/
+README.md
+
+#Ignoring git and cache folders
+.git
+.idea

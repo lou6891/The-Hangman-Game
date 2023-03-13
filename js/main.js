@@ -175,6 +175,8 @@ function addLetter(letter){
                 document.getElementById("word-result").innerText = word.join("")
                 document.getElementById("word-definition").innerText = "definition:\n" +definition
 
+                // remove the skeleton images
+                document.getElementById("life" + (errorCount -1)).remove()
 
                 // Show and animate the winning dancing skeletons
                 for (let i = 1; i <= 3; i++) {

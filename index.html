@@ -96,6 +96,9 @@
       const beginButton = document.getElementById("begin")
       beginButton.addEventListener("click", ()=>{
         const selectorValue =  difficulty_selector.value;
+        // to avoid multiple clicks during api call
+        beginButton.disabled = true;
+        // start the game
         beginGame(selectorValue)
       })
     });
