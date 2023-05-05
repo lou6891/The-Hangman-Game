@@ -1,7 +1,7 @@
 # Create the Hangman Game using HTML
 ## Assigment for Javascript course of MCSBT at IE
 
-> Instead of reading all of this, try it (is http)! [The Hangman Game](http://34.175.27.70)
+> Instead of reading all of this, try it (is http)! [The Hangman Game](http://34.27.214.52/)
 
 ### Requirements:
 - Create a Hangman Game
