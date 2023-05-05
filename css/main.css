@@ -16,6 +16,13 @@
   --keyboardFontSize : 30px;
 }
 
+:root{
+  --backgroundSize : 100% 100vh;
+  --treeRight : 0;
+  --treeVisibility : visible;
+
+}
+
 html {
   color: #222;
   font-size: 1em;
@@ -23,8 +30,9 @@ html {
   background-image: url("../img/graveyard_bckground.jpeg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  //background-size: contain;
-  background-size:100% 100vh;
+  //background-size: cover;
+  //background-size:100% 100vh;
+  background-size: var(--backgroundSize);
 
   overflow: hidden;
 }
@@ -108,7 +116,7 @@ select option:not(:last-child) { margin-bottom: 8px; }
 }
 
 #hangmanContainer{
-  height: 100vh;
+  height: 100%;
   width: 100%;
 }
 
@@ -116,7 +124,8 @@ select option:not(:last-child) { margin-bottom: 8px; }
 .tree_picture{
   min-height: 750px;
   position: absolute;
-  right: 0;
+  right: var(--treeRight);
+  visibility: var(--treeVisibility);
   width: auto ;
   height: 100%;
   object-fit: fill;
@@ -183,21 +192,34 @@ select option:not(:last-child) { margin-bottom: 8px; }
   }
 }
 
-#on-screen-container{
+#on-screen-container-desktop{
   border-radius: 20px;
   padding: 5px;
   backdrop-filter: blur(5px);
 
-  position: absolute;
   background-color: transparent;
   z-index: 10;
-  left: 100px;
-  bottom: 170px;
+
   font-size: 40px;
 
   justify-content: center;
   justify-items: center;
 }
+
+.oc_desktop{
+  left: 100px;
+  bottom: 170px;
+  position: absolute;
+  z-index: 10;
+}
+
+.oc_mobile{
+  position: absolute;
+  bottom : 10px;
+  //width: available;
+  z-index: 10;
+}
+
 
 /*
 Container for button made due to css issue

@@ -215,3 +215,33 @@ function addLetter(letter){
         }
     }
 }
+
+
+function detectMobile() {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    return isMobile;
+}
+
+// main.js
+function updateCSSForScreenSize() {
+    const isMobile = detectMobile();
+    const onScreenContainer = document.getElementById('on-screen-container');
+    let styleElement = document.createElement('style');
+    if (isMobile) {
+        styleElement.textContent = `:root { --treeRight : -90px ; --backgroundSize : cover;  --treeVisibility : hidden;}`;
+        //document.getElementById('body').style.width = `100%`
+        //console.log("width", window.innerWidth)
+        onScreenContainer.classList.add("oc_mobile")
+    }
+    else {
+        styleElement.textContent = `:root { --treeRight : 0 ; --backgroundSize : 100% 100vh;  --treeVisibility : visible; }`;
+        onScreenContainer.classList.add("oc_desktop")
+    }
+    document.head.appendChild(styleElement);
+}
+
+
+// main.js
+document.addEventListener("DOMContentLoaded", function () {
+    updateCSSForScreenSize();
+});
