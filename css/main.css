@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Base styles: opinionated defaults
+    Base styles: opinionated defaults
    ========================================================================== */
 @font-face { font-family: Bloody; src: url('font/BLOODY.woff'); }
 @font-face { font-family: BloodyTerror; src: url('font/Bloody_terror.woff'); }
@@ -30,8 +30,8 @@ html {
   background-image: url("../img/graveyard_bckground.jpeg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  //background-size: cover;
-  //background-size:100% 100vh;
+  /* background-size: cover; */
+  /* background-size:100% 100vh; */
   background-size: var(--backgroundSize);
 
   overflow: hidden;
@@ -216,15 +216,15 @@ select option:not(:last-child) { margin-bottom: 8px; }
 .oc_mobile{
   position: absolute;
   bottom : 10px;
-  //width: available;
+  /* width: available; */
   z-index: 10;
 }
 
 
 /*
 Container for button made due to css issue
- with the width and position of the button
- some with the calc of the width
+with the width and position of the button
+some with the calc of the width
  */
 #new-game-button-container{
   width: 100%;

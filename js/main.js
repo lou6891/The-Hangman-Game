@@ -176,7 +176,12 @@ function addLetter(letter){
                 document.getElementById("word-definition").innerText = "definition:\n" +definition
 
                 // remove the skeleton images
-                document.getElementById("life" + (errorCount -1)).remove()
+                try {
+                    document.getElementById("life" + (errorCount -1)).remove()
+                }
+                catch (e){
+                    console.log(e)
+                }
 
                 // Show and animate the winning dancing skeletons
                 for (let i = 1; i <= 3; i++) {
@@ -189,7 +194,7 @@ function addLetter(letter){
         else {
             const hangmanContainer = document.getElementById("hangmanContainer")
             const img = document.createElement("img");
-            img.src = "../img/life" + errorCount + ".png"
+            img.src = "./img/life" + errorCount + ".png"
             img.className = "skeleton_picture"
             img.id = "life" + errorCount
             hangmanContainer.appendChild(img);
